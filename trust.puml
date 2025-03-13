@@ -1,0 +1,34 @@
+@startuml
+
+class Insel {
+  +Name: string
+  +Groesse: int
+  +Bevoelkerung: int
+  +Kuesten: int
+  +Wesen: []Wesen
+  +Besucht: bool
+}
+
+class Wesen {
+  +Name: string
+  +Freundlich: bool
+  +Staerke: int
+  +Beschreibung: string
+}
+
+class Spieler {
+  +Name: string
+  +Crewmitglieder: int
+  +AktuelleInsel: *Insel
+  +BesuchteInseln: []*Insel
+}
+
+class Spielwelt {
+  +Inseln: []Insel
+}
+
+Insel o-- "*" Wesen
+Spielwelt o-- "*" Insel
+Spielwelt *-- Spieler
+
+@enduml
